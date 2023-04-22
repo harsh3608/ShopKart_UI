@@ -1,0 +1,10 @@
+.container {
+     height: 30px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.spacer {
+     flex: 1 1 auto
+}

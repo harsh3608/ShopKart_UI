@@ -1,0 +1,62 @@
+.container {
+  width: 2500px;
+  margin-left: 10%;
+  margin-top: 20px;
+  /* margin-top: auto;
+  margin-left: auto;
+  margin-bottom: auto;
+  margin-right: auto; */
+  background: rgb(236, 227, 255);
+}
+
+.card {
+  height: max-content;
+  margin: 25px;
+  padding: 25px;
+}
+
+/* .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  margin-top: 50px;
+} */
+
+
+img {
+  width: 70px;
+  height: 70px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.aggtxt {
+  text-align: center;
+  font-weight: 550;
+  background: rgb(236, 227, 255);
+}
+
+.desc {
+  overflow-y: scroll;
+  width: 250px;
+  height: 40px;
+  margin-left: 15%;
+  background: rgb(255, 255, 255);
+}

@@ -1,0 +1,55 @@
+<div class="container border p-3 rounded-3">
+  <div class="g-0">
+    <div class="col text-center p-2 mb-3 bg-light">
+      <span class="fs-3">User Profile</span>
+    </div>
+    <strong><span class="material-icons">
+        person
+      </span> Name:</strong>
+    <span class="text-justify"> {{ user.firstName +" "+ user.lastName }} </span>
+    <hr />
+    <strong><span class="material-icons">
+        smartphone
+      </span> Mobile Number:</strong>
+    <span class="text-justify"> {{ user.mobile }} </span>
+    <hr />
+    <strong><span class="material-icons">
+        mail
+      </span> Email:</strong>
+    <span class="text-justify"> {{ user.email }} </span>
+    <hr />
+    <strong><span class="material-icons">
+        location_on
+      </span> Address:</strong>
+    <span class="text-justify"> {{ user.address }} </span>
+    <hr />
+    <strong><span class="material-icons">
+        card_membership
+      </span> Is Prime Member?</strong>
+    <span class="text-justify"> {{ user.isPrimeMember? 'Yes':'No' }} </span>
+    <hr />
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-secondary" [routerLink]="['/update/',uid]">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-warning" (click)="confirmChangePass(user.id)">
+              <i class="fa fa-key" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col">
+            <button class="btn btn-danger" (click)="logOut()">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

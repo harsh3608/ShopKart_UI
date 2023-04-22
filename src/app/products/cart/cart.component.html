@@ -1,0 +1,70 @@
+<ng-container *ngIf="!isKartEmpty">
+  <div class="container border p-3 rounded-3">
+    <h3><strong>My Kart</strong></h3>
+    <hr />
+    <div class="card ">
+      <table>
+        <thead>
+          <tr>
+            <th>Sr. No.</th>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Product Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let item of products, let i = index">
+          <tr>
+            <td>{{i+1}}</td>
+            <td>{{item.name}}</td>
+            <td>
+              <img src="{{imageBaseLink+item.productImage}}" />
+            </td>
+            <td><div class="desc">{{item.description}}</div></td>
+            <td>{{item.price | currency:'INR'}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="removeProductFromCart(item.cartProductId)">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 4%;">
+        <div class="row">
+          <div class="col">
+            <button pRipple pTooltip="Enter your username" tooltipPosition="left" class="btn btn-danger" (click)="emptyCart()">Empty Cart</button>
+          </div>
+          <div class="col">
+            <button class="btn btn-success">Place Order</button>
+          </div>
+          <div class="col">
+            Total Items: <input readonly value="{{totalItems}}" class="aggtxt"/>
+          </div>
+          <div class="col">
+            Total Price:  <input readonly value="{{totalPrice| currency:'INR'}}" class="aggtxt"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="isKartEmpty">
+  <div class="container border p-3 rounded-3">
+    <h3><strong>My Kart</strong></h3>
+    <hr />
+    <div class="card ">
+      <div class="center" style="margin-left: 45%;">
+        <img src="https://localhost:7223/resources/Capture.PNG" alt="picture" style="margin-left: 18px;" />
+        <h2>Your Kart is empty!</h2>
+        <h4>Add item to it now!</h4>
+        <button class="btn btn-primary" [routerLink]="['/home/']">Shop Now</button>
+      </div>
+    </div>
+
+  </div>
+</ng-container>

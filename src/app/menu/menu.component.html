@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+     <span><mat-icon fontIcon="shopping_cart"></mat-icon> ShopKart</span>
+     <div class="spacer"></div>
+
+     <span>Hello, {{name}}
+      <div class="badge bg-primary circle" >
+          <div class="tick"><i class="fa fa-check"></i></div>
+          </div>
+    </span>
+     &nbsp;&nbsp;&nbsp;
+     <a mat-raised-button color="accent" class="mr-5" routerLink="/home" *ngIf="loggedIn()">Home</a>
+     <!-- <a mat-button routerLink="/login" *ngIf="!loggedIn()">Login</a>
+          <a mat-button routerLink="/register" *ngIf="!loggedIn()">Register</a> -->
+     <a mat-button [routerLink]="['/profile/',id]" *ngIf="loggedIn()">My Profile</a>
+     <a mat-button [routerLink]="['/cart/',cartId]" *ngIf="loggedIn()">
+      <i class="fa fa-shopping-cart" style="float: inline-end; scale: 1.5;" aria-hidden="true"></i>
+        <div style="font-size: 10px;" class="badge bg-danger" >{{totalItems}}</div>
+
+    </a>
+     <a mat-button (click)="logOut()" color="warn" *ngIf="loggedIn()">Log Out</a>
+</mat-toolbar>

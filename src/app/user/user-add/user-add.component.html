@@ -1,0 +1,147 @@
+<div class="container border p-3 rounded-3">
+  <form [formGroup]="addUserForm" (ngSubmit)="submitAddForm()">
+    <div class="row g-0">
+      <div class="col text-center p-2 mb-3 bg-light">
+        <span class="fs-3">User Registration</span>
+      </div>
+
+      <div class="row">
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" maxlength="15">
+            <div class="form-text text-danger"
+              *ngIf="firstName.errors?.['required'] && (firstName.touched || firstName.dirty)">
+              First Name is Required !
+            </div>
+            <div class="form-text text-danger"
+              *ngIf="firstName.errors?.['minlength'] || firstName.errors?.['pattern'] && (firstName.touched || firstName.dirty)">
+              First name should contain only letters and must be of min(3) to max(15) characters !
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" maxlength="15">
+            <div class="form-text text-danger"
+              *ngIf="lastName.errors?.['required'] && (lastName.touched || lastName.dirty)">
+              Last Name is Required !
+            </div>
+            <div class="form-text text-danger"
+              *ngIf="lastName.errors?.['minlength'] || lastName.errors?.['pattern'] && (lastName.touched || lastName.dirty)">
+              Last name should contain only letters and must be of min(3) to max(15) characters !
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="mobile" maxlength="10" formControlName="mobile">
+            <div class="form-text text-danger" *ngIf="mobile.errors?.['required'] && (mobile.touched || mobile.dirty)">
+              Mobile Number is Required !
+            </div>
+            <div class="form-text text-danger" *ngIf="mobile.errors?.['pattern'] && (mobile.touched || mobile.dirty)">
+              Please enter valid Mobile Number !
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" formControlName="address">
+            <div class="form-text text-danger"
+              *ngIf="address.errors?.['required'] && (address.touched || address.dirty)">
+              Address is Required !
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email">
+            <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+              Email is Required !
+            </div>
+            <div class="form-text text-danger"
+              *ngIf="Email.errors?.['email'] || Email.errors?.['pattern'] && (Email.touched || Email.dirty)">
+              Please enter valid Email !
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="isPrimeMember" class="form-label">IsPrimeMember?</label>
+            <!-- <input type="text" class="form-control" id="isPrimeMember" formControlName="isPrimeMember"> -->
+            <mat-slide-toggle style="scale: 1;margin-left: 0%; margin-top: 0%" class="form-control" id="isPrimeMember"
+              formControlName="isPrimeMember">Slide me!</mat-slide-toggle>
+            <span class="slider round"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="password" class="form-label">New Password</label>
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password"
+              formControlName="password">
+            <div class="form-text text-danger"
+              *ngIf="Password.errors?.['required'] && (Password.touched || Password.dirty)">
+              Password is Required !
+            </div>
+            <div class="form-text text-danger"
+              *ngIf="Password.errors?.['pattern'] || Password.errors?.['minLength'] || Password.errors?.['maxLength'] && (Password.touched || Password.dirty)">
+              Password should contain atleast 1 lowercase, 1 uppercase alphabet, 1 number and 1
+              special Character and be of 6-15
+              characters !
+            </div>
+            <div style="margin-top: 10px;">
+              <label for="showPass" style="margin-right: 15px;">Show Password</label>
+              <input type="checkbox" (click)="togglePasswordVisibility()" id="showPass">
+            </div>
+          </div>
+        </div>
+
+        <div class="col mb-3 form-input">
+          <div style="margin-bottom: 10px;">
+            <label for="repeatPassword" class="form-label">Confirm New Password</label>
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="repeatPassword"
+              formControlName="repeatPassword">
+            <div class="form-text text-danger"
+              *ngIf="rptpswd.errors?.['required'] && (rptpswd.touched || rptpswd.dirty)">
+              Please Confirm Password !
+            </div>
+            <div class="form-text text-danger"
+              *ngIf="addUserForm.hasError('notSame')  && (rptpswd.touched || rptpswd.dirty)">
+              Password Does not match !
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 10px; ">
+        <div class="col">Already have a account?</div>
+        <div class="col"><a routerLink="/login"> LogIn here!</a></div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 offset-3">
+          <div class="d-grid">
+            <button type="submit" [disabled]="addUserForm.invalid" class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
